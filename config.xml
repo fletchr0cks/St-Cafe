@@ -18,7 +18,6 @@
   <preference name="disable-cursor" value="false"/>
   <preference name="android-minSdkVersion" value="14"/>
   <preference name="android-installLocation" value="auto"/>
-  <gap:plugin name="com.oauthio.plugins.oauthio" version="0.2.4" />
   <gap:plugin name="org.apache.cordova.battery-status"/>
   <gap:plugin name="cordova-plugin-geolocation"/>
   <gap:plugin name="org.apache.cordova.camera"/>
@@ -63,7 +62,6 @@
   <gap:splash src="www/res/screen/ios/screen-ipad-landscape.png" gap:platform="ios" width="1024" height="768"/>
   <gap:splash src="www/res/screen/windows-phone/screen-portrait.jpg" gap:platform="winphone"/>
   <access origin="*"/>
-  <plugin name="cordova-plugin-whitelist" version="1"/>
   <allow-intent href="http://*/*"/>
   <allow-intent href="https://*/*"/>
   <allow-intent href="tel:*"/>
