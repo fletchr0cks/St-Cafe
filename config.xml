@@ -20,9 +20,6 @@
   <preference name="android-installLocation" value="auto"/>
   <gap:plugin name="com.oauthio.plugins.oauthio" version="0.2.4" />
   <gap:plugin name="org.apache.cordova.battery-status"/>
-  <feature name="Geolocation">
-    <param name="android-package" value="org.apache.cordova.GeoBroker" />
-  </feature>
   <gap:plugin name="cordova-plugin-geolocation"/>
   <gap:plugin name="org.apache.cordova.camera"/>
   <gap:plugin name="org.apache.cordova.media-capture"/>
