@@ -33,6 +33,7 @@
     SafariViewController.isAvailable(function (available) {
     alert("yes");
       if (available) {
+      alert("yes2");
         SafariViewController.show({
               url: url,
               hidden: false, // default false
@@ -57,6 +58,7 @@
             })
       } else {
         // potentially powered by InAppBrowser because that (currently) clobbers window.open
+        alert("no");
         window.open(url /*, '_blank', 'location=yes'*/);
       }
     })
