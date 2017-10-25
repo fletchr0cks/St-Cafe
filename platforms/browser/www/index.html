@@ -29,19 +29,26 @@
 <script type="text/javascript" src="cordova.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
 <script>
+function handleOpenURL(url) {
+  console.log("received url: " + url);
+  alert("received url: " + url);
+}
+
   function openUrl(url, readerMode) {
     SafariViewController.isAvailable(function (available) {
     alert("yes");
       if (available) {
-        SafariViewController.show({
-              url: url,
-              hidden: false, // default false
-              animated: true, // default true, note that 'hide' will reuse this preference (the 'Done' button will always animate though)
-              transition: 'curl', // unless animated is false you can choose from: curl, flip, fade, slide (default)
-              enterReaderModeIfAvailable: readerMode, // default false
-              barColor: "#0000ff", // default is white (iOS 10 only)
-              tintColor: "#ffffff" // default is ios blue
-            },
+      alert("yes2");
+
+        SafariViewController.show(
+		      {
+		        url: 'https://accounts.google.com/o/oauth2/v2/auth?' +
+		             'scope=email%20profile&' +
+		             'state=9876543210&' +
+		             'redirect_uri=https%3A%2F%2Fkomwiththewind.apphb.com%2FHome%2Ffw&' +
+		             'response_type=code&' +
+		             'client_id=812741506391.apps.googleusercontent.com'
+      },
             function(result) {
               if (result.event === 'opened') {
                 console.log('opened');
@@ -57,6 +64,7 @@
             })
       } else {
         // potentially powered by InAppBrowser because that (currently) clobbers window.open
+        alert("no");
         window.open(url /*, '_blank', 'location=yes'*/);
       }
     })
