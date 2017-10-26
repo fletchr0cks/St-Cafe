@@ -63,6 +63,8 @@ function sendToken(token) {
         type: "POST",
         url: "https://www.strava.com/oauth/token",
         dataType: "jsonp",
+        processData: false,  // tell jQuery not to process the data
+       contentType: false,  // tell jQuery not to set contentType
         headers: {
 		      'Accept': 'application/json'
     },
