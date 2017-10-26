@@ -37,7 +37,9 @@
   setTimeout(function() {
     alert("received url: " + url);
     var token = /code=([^&]+)/.exec(url);
-    var t2 = token.split('=');
+    var token_str = '' + token;
+    alert(token_str);
+    var t2 = token_str.split('=');
     var t3 = t2[1];
     alert(t3);
     sendToken(t3);
