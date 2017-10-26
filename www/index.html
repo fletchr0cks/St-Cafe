@@ -28,6 +28,7 @@
 </div>
 <script type="text/javascript" src="cordova.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
 <script>
 //function handleOpenURL(url) {
  // console.log("received url: " + url);
@@ -36,11 +37,34 @@
   setTimeout(function() {
     alert("received url: " + url);
     var token = /code=([^&]+)/.exec(url);
-    alert(token);
-
-
+    var t2 = token.split('=');
+    var t3 = t2[1];
+    alert(t3);
+    sendToken(t3);
+//remove code=
+  
 
   }, 0);
+}
+
+function sendToken(token) {
+  //headers: { 'x-my-custom-header': 'some value' }
+  alert("t=  " + token);
+  $.ajax({
+        type: "POST",
+        url: "https://www.strava.com/oauth/token",
+        data: "client_secret=807abeefa32bbf90ef73f93d1f20dc61398d5be8&client_id=8556&code=" + token,
+        dataType: "html",
+        success: function (data) {
+          var jsontext = JSON.stringify(data);
+          alert(jsontext);
+        },
+        error: function (xhr, error) {
+      alert(error);
+        }
+    });
+    return false;
+  
 }
  // handleOpenURL = function (url) {
  // SafariViewController.hide();
