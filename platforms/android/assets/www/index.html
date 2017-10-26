@@ -59,13 +59,13 @@ function sendToken(token) {
      "code": token
   };
 
-  var uri = "client_secret=807abeefa32bbf90ef73f93d1f20dc61398d5be8&client_id=8556&code=" + token,
+  var uri = "client_secret=807abeefa32bbf90ef73f93d1f20dc61398d5be8&client_id=8556&code=" + token
   var res = encodeURIComponent(uri);
 alert(res);
   $.ajax({
         type: "POST",
         url: "https://www.strava.com/oauth/token",
-        data: res;
+        data: res,
         dataType: "jsonp",
         processData: false,  // tell jQuery not to process the data
        contentType: false,  // tell jQuery not to set contentType
