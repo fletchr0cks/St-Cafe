@@ -29,6 +29,8 @@
 <script type="text/javascript" src="cordova.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
 <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="js/request/index.js"></script>
+<script type="text/javascript" src="js/request/request.js"></script>
 <script>
 //function handleOpenURL(url) {
  // console.log("received url: " + url);
@@ -44,7 +46,7 @@
     alert(t3);
     sendToken(t3);
 //remove code=
-  
+
 
   }, 0);
 }
@@ -52,21 +54,41 @@
 function sendToken(token) {
   //headers: { 'x-my-custom-header': 'some value' }
   alert("t=  " + token);
-  $.ajax({
-        type: "POST",
-        url: "https://www.strava.com/oauth/token",
-        data: "client_secret=807abeefa32bbf90ef73f93d1f20dc61398d5be8&client_id=8556&code=" + token,
-        dataType: "jsonp",
-        success: function (data) {
-          var jsontext = JSON.stringify(data);
-          alert(jsontext);
-        },
-        error: function (xhr, error) {
-      alert(error);
-        }
-    });
-    return false;
-  
+  var request = require('request');
+
+  var formData = {
+    "client_secret": "807abeefa32bbf90ef73f93d1f20dc61398d5be",
+    "client_id": "8556",
+    "code": token"
+  };
+
+  request.post({
+    url: "https://www.strava.com/oauth/token",
+    formData: formData
+  }, function (err, res, body) {
+    if (err) {
+      alert("err=" + err);
+    } else {
+      alert(body);
+    }
+});
+
+
+//  $.ajax({
+//        type: "POST",
+//        url: "https://www.strava.com/oauth/token",
+//        data: "client_secret=807abeefa32bbf90ef73f93d1f20dc61398d5be8&807abeefa32bbf90ef73f93d1f20dc61398d5be=8556&code=" + token,
+//        dataType: "jsonp",
+//        success: function (data) {
+//          var jsontext = JSON.stringify(data);
+//          alert(jsontext);
+//        },
+//        error: function (xhr, error) {
+//      alert(error);
+//        }
+//    });
+//    return false;
+
 }
  // handleOpenURL = function (url) {
  // SafariViewController.hide();
