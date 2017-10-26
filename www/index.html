@@ -42,12 +42,19 @@ function handleOpenURL(url) {
 
         SafariViewController.show(
 		      {
-		        url: 'https://accounts.google.com/o/oauth2/v2/auth?' +
-		             'scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcalendar&' +
-		             'state=9876543210&' +
-		             'redirect_uri=https%3A%2F%2Flb4.apphb.com%2FHome%2Fabout&' +
-		             'response_type=code&' +
-		             'client_id=651937086252-na99drkmmna0k5purb5h27mnfifvc2tr.apps.googleusercontent.com'
+            url:'https://www.strava.com/oauth/authorize?' +
+            'client_id=8556&' +
+            'response_type=code&' +
+            'redirect_uri=https%3A%2F%2Flb4.apphb.com%2FHome%2Fabout&' +
+            'scope=public&' +
+            'state=mystate&' +
+            'approval_prompt=force'
+		        //url: 'https://accounts.google.com/o/oauth2/v2/auth?' +
+		        //     'scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcalendar&' +
+		        // /   'state=9876543210&' +
+		        //     'redirect_uri=https%3A%2F%2Flb4.apphb.com%2FHome%2Fabout&' +
+		         //    'response_type=code&' +
+		        //     'client_id=651937086252-na99drkmmna0k5purb5h27mnfifvc2tr.apps.googleusercontent.com'
       },
             function(result) {
               if (result.event === 'opened') {
