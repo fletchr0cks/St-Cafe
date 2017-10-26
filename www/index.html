@@ -35,6 +35,11 @@
   function handleOpenURL(url) {
   setTimeout(function() {
     alert("received url: " + url);
+    var token = /code=([^&]+)/.exec(url);
+    alert(token);
+
+
+
   }, 0);
 }
  // handleOpenURL = function (url) {
