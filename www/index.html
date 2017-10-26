@@ -29,10 +29,21 @@
 <script type="text/javascript" src="cordova.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
 <script>
-function handleOpenURL(url) {
-  console.log("received url: " + url);
-  alert("received url: " + url);
+//function handleOpenURL(url) {
+ // console.log("received url: " + url);
+ // alert("received url: " + url);
+  function handleOpenURL(url) {
+  setTimeout(function() {
+    alert("received url: " + url);
+  }, 0);
 }
+ // handleOpenURL = function (url) {
+ // SafariViewController.hide();
+ // if (url.startsWith('mycollapp://token#') {
+ //   var token = /access_token=([^&]+)/.exec(url);
+ // }
+//};
+//}
 
   function openUrl(url, readerMode) {
     SafariViewController.isAvailable(function (available) {
