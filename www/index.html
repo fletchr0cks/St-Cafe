@@ -56,7 +56,7 @@ function sendToken(token) {
         type: "POST",
         url: "https://www.strava.com/oauth/token",
         data: "client_secret=807abeefa32bbf90ef73f93d1f20dc61398d5be8&client_id=8556&code=" + token,
-        dataType: "html",
+        dataType: "jsonp",
         success: function (data) {
           var jsontext = JSON.stringify(data);
           alert(jsontext);
