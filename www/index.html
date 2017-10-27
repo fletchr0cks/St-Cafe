@@ -55,29 +55,55 @@ function sendToken(token) {
   //headers: { 'x-my-custom-header': 'some value' }
   alert("t=  " + token);
 
- var formData = {
-     "client_secret": "807abeefa32bbf90ef73f93d1f20dc61398d5be",
-     "client_id": "8556",
-     "code": token
-  };
+// var formData = {
+var client_secret = "807abeefa32bbf90ef73f93d1f20dc61398d5be";
+  var client_id = "8556";
+    var code = token;
+//  };
 
   var uri = "https://www.strava.com/oauth/token?client_secret=807abeefa32bbf90ef73f93d1f20dc61398d5be8&client_id=8556&code=" + token
   var res = encodeURIComponent(uri);
-alert(res);
-  $.ajax({
-        type: "POST",
-        url: res,
-       // data: res,
-        dataType: "jsonp",
-        success: function (data) {
-        var jsontext = JSON.stringify(data);
+//alert(res);
+
+$.post("https://www.strava.com/oauth/token", {
+		  "client_secret":  client_secret,
+		  "client_id": client_id,
+		  "code": code
+      },
+      function( data ) {
+               // console.log( data );
+                var jsontext = JSON.stringify(data);
           alert(jsontext);
-        },
-        error: function (xhr, error) {
-      alert(error);
-        }
-    });
-    return false;
+      },
+      "JSON" );
+
+//
+//$.ajax({
+//       url: 'https://www.strava.com/oauth/token',
+//       method: 'POST',
+//       contentType: 'application/json',
+//       processData: false,
+//       headers: { 'client_secret': client_secret, 'client_id': client_id, 'code': code }
+     //  data: {"list_id": parseInt(list_id), "title": title.toString() }
+//   }).success(function(data){
+//      var jsontext = JSON.stringify(data);
+//          alert(jsontext);
+//   }).error(handleError);
+
+//  $.ajax({
+//        type: "POST",
+//        url: res,
+       // data: res,
+//        dataType: "jsonp",
+//        success: function (data) {
+//        var jsontext = JSON.stringify(data);
+//          alert(jsontext);
+//        },
+//        error: function (xhr, error) {
+//      alert(error);
+//        }
+//    });
+//    return false;
 
 }
  // handleOpenURL = function (url) {
