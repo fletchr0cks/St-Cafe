@@ -41,8 +41,10 @@
     alert(token_str);
     var t2 = token_str.split('=');
     var t3 = t2[1];
-    alert(t3);
-    sendToken(t3);
+    var t4 = t3.split(',');
+    var t5 = t4[0];
+    alert(t5);
+    sendToken(t5);
 //remove code=
 
 
