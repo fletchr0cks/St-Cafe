@@ -22,7 +22,7 @@
     <p class="event received">Device is Ready</p>
     <br/>
     <button onclick="openUrl('https://en.m.wikipedia.org/wiki/Safari', false)">Open Wikipedia</button><br/><br/>
-    <button onclick="openUrl('https://en.m.wikipedia.org/wiki/Safari', true)">Open Wikipedia in reader mode</button><br/><br/>
+    <button onclick="sendToken2('550758b7ff5947b8e1b1f52134a548235e4a86f9')">Open Wikipedia in reader mode</button><br/><br/>
     <button onclick="openUrl('https://en.m.wikipedia.org/wiki/Safari', false);setTimeout(dismissSafari, 10000)">Open Wikipedia, auto-dismiss after 10s</button>
   </div>
 </div>
@@ -44,12 +44,32 @@
     var t4 = t3.split(',');
     var t5 = t4[0];
     alert(t5);
-    sendToken(t5);
+    sendToken2(t5);
 //remove code=
 
 
   }, 0);
 }
+function sendToken2(token) {
+var client_secret = "807abeefa32bbf90ef73f93d1f20dc61398d5be";
+  var client_id = "8556";
+    var code = token;
+var url = 'https://www.strava.com/oauth/token?client_id=' + client_id + '&client_secret=' + client_secret + '&code=' + code;
+alert("url=" + url);
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", url, true);
+
+        xhr.onreadystatechange = function() {
+            if(xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
+                alert(xhr.response);
+            }
+        }
+
+        xhr.send();
+
+}
+
+
 
 function sendToken(token) {
   //headers: { 'x-my-custom-header': 'some value' }
