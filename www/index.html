@@ -56,9 +56,9 @@ var client_secret = "807abeefa32bbf90ef73f93d1f20dc61398d5be";
 var url = 'https://www.strava.com/oauth/token?client_id=' + client_id + '&client_secret=' + client_secret + '&code=' + code;
 alert("url=" + url);
         var xhr = new XMLHttpRequest();
-          xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhr.open("POST", url, true);
 
+        xhr.open("POST", url, true);
+		xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhr.onreadystatechange = function() {
             if(xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
                 alert(xhr.response);
