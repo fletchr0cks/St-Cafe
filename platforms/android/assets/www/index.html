@@ -1,144 +1,41 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
-  <meta name="format-detection" content="telephone=no">
-  <meta name="msapplication-tap-highlight" content="no">
-  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-  <link rel="stylesheet" type="text/css" href="css/index.css">
-  <title>Safari VC</title>
-  <script>
-    window.onerror = function (err, file, line) {
-      alert(err + ", " + line)
-    };
-  </script>
+    <!--
+        Customize the content security policy in the meta tag below as needed. Add 'unsafe-inline' to default-src to enable inline JavaScript.
+        For details, see http://go.microsoft.com/fwlink/?LinkID=617521 -->
+
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *;frame-src *">
+    <frame-options policy="SAMEORIGIN" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+    <title>BlankCordovaApp1</title>
 </head>
-<body style="background: none; background-color: #ddd">
-<div class="app">
-  <h1>Safari VC</h1>
+<body>
 
-  <div id="deviceready" class="blink">
-    <p class="event listening">Connecting to Device</p>
+    <div class="app">
+        <h1>Apache Cordova</h1>
+        <div id="deviceready" class="blink">
+            <p class="event listening">Connecting to Device ...</p>
+            <p class="event received">Device is Ready ...</p>
+        </div>
+        <a href="#" onclick="startAuth()">
+            Sign In
+        </a>
+        <button id="myButton">Click me</button>
+        <div id="info">info here</div>
+    </div>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script src="scripts/jquery-3.3.1.js"></script>
+    <script src="scripts/jquery-3.3.1.intellisense.js"></script>
+    <script src="scripts/jquery.mobile-1.4.5.js"></script>
+    <script type="text/javascript" src="scripts/platformOverrides.js"></script>
+    <script type="text/javascript" src="scripts/index.js"></script>
+    <script type="text/javascript" src="scripts/hello.all.js"></script>
+    <script type="text/javascript" src="scripts/cordova.oauth2.js"></script>
 
-    <p class="event received">Device is Ready</p>
-    <br/>
-    <button onclick="openUrl('https://en.m.wikipedia.org/wiki/Safari', false)">Open Wikipedia</button><br/><br/>
-    <button onclick="openUrl('https://en.m.wikipedia.org/wiki/Safari', true)">Open Wikipedia in reader mode</button><br/><br/>
-    <button onclick="openUrl('https://en.m.wikipedia.org/wiki/Safari', false);setTimeout(dismissSafari, 10000)">Open Wikipedia, auto-dismiss after 10s</button>
-  </div>
-</div>
-<script type="text/javascript" src="cordova.js"></script>
-<script type="text/javascript" src="js/index.js"></script>
-<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
-<script>
-//function handleOpenURL(url) {
- // console.log("received url: " + url);
- // alert("received url: " + url);
-  function handleOpenURL(url) {
-  setTimeout(function() {
-    alert("received url: " + url);
-    var token = /code=([^&]+)/.exec(url);
-    var token_str = '' + token;
-    alert(token_str);
-    var t2 = token_str.split('=');
-    var t3 = t2[1];
-    alert(t3);
-    sendToken(t3);
-//remove code=
-
-
-  }, 0);
-}
-
-function sendToken(token) {
-  //headers: { 'x-my-custom-header': 'some value' }
-  alert("t=  " + token);
-
- var formData = {
-     "client_secret": "807abeefa32bbf90ef73f93d1f20dc61398d5be",
-     "client_id": "8556",
-     "code": token
-  };
-
-  var uri = "https://www.strava.com/oauth/token?client_secret=807abeefa32bbf90ef73f93d1f20dc61398d5be8&client_id=8556&code=" + token
-  var res = encodeURIComponent(uri);
-alert(res);
-  $.ajax({
-        type: "POST",
-        url: res,
-       // data: res,
-        dataType: "jsonp",
-        success: function (data) {
-        var jsontext = JSON.stringify(data);
-          alert(jsontext);
-        },
-        error: function (xhr, error) {
-      alert(error);
-        }
-    });
-    return false;
-
-}
- // handleOpenURL = function (url) {
- // SafariViewController.hide();
- // if (url.startsWith('mycollapp://token#') {
- //   var token = /access_token=([^&]+)/.exec(url);
- // }
-//};
-//}
-
-  function openUrl(url, readerMode) {
-    SafariViewController.isAvailable(function (available) {
-    alert("yes");
-      if (available) {
-      alert("yes2");
-
-        SafariViewController.show(
-		      {
-            url:'https://www.strava.com/oauth/authorize?' +
-            'client_id=8556&' +
-            'response_type=code&' +
-            'redirect_uri=http://lb4.apphb.com/Home/about&' +
-            'scope=write&' +
-            'state=mystate&' +
-            'approval_prompt=force'
-		        //url: 'https://accounts.google.com/o/oauth2/v2/auth?' +
-		        //     'scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcalendar&' +
-		        // /   'state=9876543210&' +
-		        //     'redirect_uri=https%3A%2F%2Flb4.apphb.com%2FHome%2Fabout&' +
-		         //    'response_type=code&' +
-		        //     'client_id=651937086252-na99drkmmna0k5purb5h27mnfifvc2tr.apps.googleusercontent.com'
-      },
-            function(result) {
-              if (result.event === 'opened') {
-                console.log('opened');
-              } else if (result.event === 'loaded') {
-                console.log('loaded');
-//                SafariViewController.hide();
-              } else if (result.event === 'closed') {
-                console.log('closed');
-              }
-            },
-            function(msg) {
-              console.log("KO: " + JSON.stringify(msg));
-            })
-      } else {
-        // potentially powered by InAppBrowser because that (currently) clobbers window.open
-        alert("no");
-        url='https://www.strava.com/oauth/authorize?' +
-		            'client_id=8556&' +
-		            'response_type=code&' +
-		            'redirect_uri=http://lb4.apphb.com/Home/about&' +
-		            'scope=write&' +
-		            'state=mystate&' +
-            'approval_prompt=force'
-        window.open(url /*, '_blank', 'location=yes'*/);
-      }
-    })
-  }
-
-  function dismissSafari() {
-    SafariViewController.hide()
-  }
-</script>
 </body>
 </html>
