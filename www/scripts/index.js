@@ -61,7 +61,7 @@
             token_url: 'https://www.strava.com/oauth/token',   // required for response_type ="code"
             client_id: '8556',          // required
             client_secret: '807abeefa32bbf90ef73f93d1f20dc61398d5be8',      // required for response_type ="code"
-            redirect_uri: 'http://localhost:4400',       // required - any dummy url http://www.yourcompany.com
+            redirect_uri: 'http://www.komwiththewind.com/callback',       // required - any dummy url http://www.yourcompany.com
             other_params: {grant_type: 'authorization_code',scope: 'read'}         // optional params object for scope, state, ...
         }, function (token, response) {
             // do something with token or response
